@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🐶 Puppy World
 
-## Getting Started
+An interactive 3D website for a professional dog training business, built with **Next.js, React, Three.js, and React Three Fiber**.
 
-First, run the development server:
+The goal is to create an engaging digital experience that combines modern web design, 3D characters, smooth animations, and interactive storytelling.
+
+## 🚀 Tech Stack
+
+- **Next.js** – React framework with App Router
+- **React** – Component-based user interfaces
+- **TypeScript** – Type-safe development
+- **Tailwind CSS** – Styling and responsive design
+- **Three.js** – 3D graphics rendering
+- **React Three Fiber** – React renderer for Three.js
+- **React Three Drei** – Helpers and abstractions for React Three Fiber
+
+## 🛠️ Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/CarlosArancibia/puppy-world.git
+cd puppy-world
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```text
+puppy-world/
+├── public/
+│   └── models/
+│       └── puppy.glb
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   └── globals.css
+│   └── components/
+│       └── 3d/
+│           ├── Dog.tsx
+│           └── DogScene.tsx
+└── package.json
+```
 
-## Learn More
+## 🎨 3D Model Credits
 
-To learn more about Next.js, take a look at the following resources:
+The Puppy 3D model is available on [Poly Pizza](https://poly.pizza/m/xvcUwuKl4c).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Licensed under **CC0 (Public Domain)**. Free for personal and commercial use without attribution.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📌 Project Status
 
-## Deploy on Vercel
+🚧 **Work in progress**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Puppy World is currently in its early development stage. New features, animations, and visual improvements will be added progressively.
