@@ -24,13 +24,15 @@ interface DogProps {
   animation: DogAnimation;
   isMoving?: boolean;
   direction?: 'forward' | 'backward' | null;
+  isAtStart?: boolean;
 }
 
-export function Dog({ animation, isMoving, direction }: DogProps) {
+export function Dog({ animation, isMoving, direction, isAtStart = false }: DogProps) {
   const { scene, animations } = useGLTF('/models/puppy.glb');
   const { actions } = useAnimations(animations, scene);
 
   const groupRef = useRef<Group>(null);
+  const facingRef = useRef(0);
 
   const previousAction = useRef<AnimationAction | null>(null);
 
@@ -55,10 +57,10 @@ export function Dog({ animation, isMoving, direction }: DogProps) {
   useFrame((_, delta) => {
     if (!groupRef.current) return;
 
-    let targetRotation = 0;
-
-    if (isMoving) {
-      targetRotation =
+    if (isAtStart) {
+      facingRef.current = 0;
+    } else if (isMoving) {
+      facingRef.current =
         direction === 'backward'
           ? -Math.PI / 2
           : Math.PI / 2;
@@ -66,7 +68,7 @@ export function Dog({ animation, isMoving, direction }: DogProps) {
 
     groupRef.current.rotation.y = MathUtils.damp(
       groupRef.current.rotation.y,
-      targetRotation,
+      facingRef.current,
       5,
       delta,
     );

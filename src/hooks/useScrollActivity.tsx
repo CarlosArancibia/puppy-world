@@ -9,12 +9,14 @@ type ScrollDirection = 'forward' | 'backward' | null;
 interface ScrollActivity {
   isScrolling: boolean;
   direction: ScrollDirection;
+  isAtStart: boolean;
 }
 
 export function useScrollActivity(sectionRef: RefObject<HTMLElement | null>): ScrollActivity {
   const [activity, setActivity] = useState<ScrollActivity>({
     isScrolling: false,
     direction: null,
+    isAtStart: true
   });
 
   useEffect(() => {
@@ -33,6 +35,8 @@ export function useScrollActivity(sectionRef: RefObject<HTMLElement | null>): Sc
 
       const { top, bottom } = section.getBoundingClientRect();
 
+      const isAtStart = top >= -5;
+
       const isActive = top <= 0 && bottom > window.innerHeight;
 
       if (!isActive || Math.abs(delta) < 1) {
@@ -48,9 +52,11 @@ export function useScrollActivity(sectionRef: RefObject<HTMLElement | null>): Sc
       const direction = delta > 0 ? 'forward' : 'backward';
 
       setActivity((prev) =>
-        prev.isScrolling && prev.direction === direction
+        prev.isScrolling &&
+          prev.direction === direction &&
+          prev.isAtStart === isAtStart
           ? prev
-          : { isScrolling: true, direction },
+          : { isScrolling: true, direction, isAtStart },
       );
 
       clearTimeout(timeoutId);
